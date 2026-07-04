@@ -35,6 +35,7 @@
 - 【建議】MCP server 按需配置，每新增一個 MCP 必須在 CLAUDE.md 路由區登記一行「名稱＋用途＋何時用」，否則弱模型不知道它存在或亂用。
 
 ### 2.3 Hooks / Commands / 自動化
+- 【已建立，2026-07-05 經 User 核可】harness 保護 hook（PreToolUse）：對制度規則檔（CLAUDE.md、harness 頂層 *.md）的 Edit/Write，無同名 .bak 即物理擋下——04 §5 備份規則的強制版。腳本：`.claude/hooks/protect-harness.py`（fail-open，不保護 lessons/ 與新建檔）；掛載：`.claude/settings.json`。注意：hooks 設定變更需重啟 session 才生效。
 - 【尚未建立，建議初始設定】技術棧確定後優先建立一個 PostToolUse hook：對 Edit/Write 的檔案自動跑 linter。這是「物理級」防錯——不依賴模型自覺。
 - 【原則】自動化行為（「每次 X 後做 Y」）一律用 hooks 實現，不寫進 CLAUDE.md 期望模型記得——模型記憶不是執行保證。
 
