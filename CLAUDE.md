@@ -1,4 +1,4 @@
-# myProject
+# invest
 
 技術棧：待定（推定 Vue 3 + Vite + Pinia；確定後更新此行、下方驗證命令區與 `.claude/harness/07-stack-profile.md`）。
 本檔是**路由中心**：只放路由與最小核心規則。詳細規則一律在指向的獨立檔案中，不要往本檔堆內容。

@@ -1,15 +1,15 @@
 # A. 綠地基線清單
 
-> 專案：myProject（綠地專案，2026-07-04 由 Fable 5 bootstrap）
-> 技術棧：**待定**（依使用者既有工具鏈推定為 Vue 3 + Vite + Pinia 型前端專案；確定後請更新本檔第 4 節）
+> 專案：invest（綠地專案，2026-07-05 由範本 invest 分支重置；範本 2026-07-04 由 Fable 5 bootstrap）
+> 技術棧：**Vue 3 + Vite + Pinia + TypeScript**（一行式摘要；操作層詳值見 `07-stack-profile.md`，由 /stack-setup 填寫。CLAUDE.md 首行與驗證命令區亦待 /stack-setup 補完）
 > 本檔角色：整套 Harness 的「為什麼」。其他檔案是規則，本檔是規則背後的依據與能力極限聲明。
 
 ## 1. 本次 bootstrap 採用的參數（後續檔案引用時以此為準）
 
 | 參數 | 採用值 |
 |---|---|
-| PROJECT_NAME | myProject |
-| PROJECT_TYPE | 綠地模式（自動偵測：目錄為空） |
+| PROJECT_NAME | invest |
+| PROJECT_TYPE | 綠地模式（範本 invest 分支重置） |
 | LANGUAGE | 繁體中文 |
 | HARNESS_DIR | `.claude/harness/` |
 | PROJECT_LESSONS_DIR | `.claude/harness/lessons/` |
@@ -63,7 +63,7 @@
 
 ## 4. 技術棧確定後的補完清單（TODO — 由 COMMANDER 在確定棧後執行並勾銷）
 
-- [ ] 更新本檔頂部技術棧欄位
+- [x] ~~更新本檔頂部技術棧欄位~~（2026-07-05 harness-init 已填一行式摘要「Vue 3 + Vite + Pinia + TypeScript」；操作層詳值仍待 /stack-setup 填入 07）
 - [ ] 在 CLAUDE.md「驗證命令」區填入實際命令（lint / test / build / dev）
 - [ ] 填寫 `07-stack-profile.md` 全部**可確定**欄位（同步把 ⬜ 改 ✅）；無法確定者依 07 填寫規則保持 ⬜ 並註明原因，不阻擋本項勾銷
 - [ ] 建立 `.claude/settings.json` 專案 permissions（allow 驗證命令）

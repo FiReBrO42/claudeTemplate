@@ -31,10 +31,10 @@
 1. `cd ~/.claude/harness-global && git init`，推到一個**私有** GitHub repo（推薦，順便獲得歷史紀錄）；
 2. 把它加入你既有的定期備份（Time Machine 已涵蓋家目錄的話，確認它在備份範圍內）。
 
-## 四、未竟事項（bootstrap 當下無法完成，移交給你們）
+## 四、未竟事項（invest 專案初始狀態，2026-07-05 由 invest 分支重置後移交）
 
-- [ ] 技術棧確定後，執行 `00-baseline.md` 第 4 節補完清單（驗證命令、專案 permissions、lint hook、.gitignore 增補）
-- [x] ~~User 決定是否清理全域 `~/.claude/settings.json` 中的殘留 permissions~~（2026-07-04 已清理：移除 `Bash(for f:*)` 等 9 條，Read 路徑規則改指向 `Desktop/專案/**` 與 `Desktop/自用資料/**` 全專案範圍；原檔備份於 `~/.claude/settings.json.bak`）
-- [x] ~~User 為 harness-global 建立備份~~（2026-07-04 已完成本機 git 版本化，首次 commit `c457b97`。**遠端推送仍待 User**：本機 `gh` CLI 未安裝，需自行建私有 repo 後 `git remote add origin <位址> && git push -u origin main`）
-- [ ] 首次真實任務跑完後，依 `04-knowledge-protocol.md` 第 7 節做第一次反思，校準本 harness 與實際工作的摩擦點
-- [x] ~~（可選，雙保險）重跑對抗審查~~（2026-07-04 已於新增 06/07 時完成：路徑一致性／規則衝突／可執行性三鏡頭對全部 15 檔重跑，22 條發現全數修正）
+> 本節於範本 invest 分支重置時重列為 invest 的起點；一二三節為通用提醒，跨專案保留不動。
+
+- [ ] **技術棧已確定（Vue 3 + Vite + Pinia + TypeScript）**：接著執行 `/stack-setup` 完成 `00-baseline.md` 第 4 節補完清單其餘項（CLAUDE.md 首行與驗證命令區、`07-stack-profile.md` 全欄位、專案 `settings.json` permissions、lint hook、`.gitignore` 增補）。00 §4 第 1 項（00 檔頭技術棧一行式摘要）已於 harness-init 勾銷。
+- [ ] 首次真實任務跑完後，依 `04-knowledge-protocol.md` 第 7 節做第一次反思，校準本 harness 與 invest 實際工作的摩擦點
+- 〔機器層既有事實·跨專案沿用〕全域 `~/.claude/settings.json` 殘留 permissions 已於 2026-07-04 清理完畢（Read 路徑規則涵蓋 `Desktop/自用資料/**`，本專案在範圍內）；harness-global 已本機 git 版本化，**遠端推送仍待 User**（見第三節備份提醒）。

@@ -4,6 +4,7 @@
 > 寫入前必讀分流判準與格式：`../04-knowledge-protocol.md`
 
 <!-- 播種紀錄：2026-07-04 bootstrap 時 ~/.claude/harness-global/ 尚無既有累積，無播種項目。以下條目為 bootstrap 過程中新產生，已同步雙寫至 harness-global。 -->
+<!-- 播種紀錄：2026-07-05 invest 分支重置。來源 ~/.claude/harness-global/general.md（2 條）與本檔現有 2 條同根同源（同一 repo 傳承、根因一致），合併去重後無新增條目；2 條通用教訓保留。 -->
 
 ### 空專案的環境描述不可盡信，開工前先實地驗證
 - 〔症狀〕工具環境宣稱「Is a git repository: true」，實際執行 git 命令回報 not a git repository

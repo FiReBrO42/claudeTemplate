@@ -16,7 +16,7 @@
 ## 2. 雙寫規則（通用教訓專用）
 
 1. 寫入 `lessons/general.md`（進 git，**團隊權威版**，組員立即可見）。
-2. 同時鏡射一條到 `~/.claude/harness-global/general.md`（本機個人累積器，供未來新專案播種），並在條目加註〔來源專案：myProject〕；鏡射後在該目錄執行 `git add -A && git commit`（harness-global 自 2026-07-04 起為獨立 git repo）。
+2. 同時鏡射一條到 `~/.claude/harness-global/general.md`（本機個人累積器，供未來新專案播種），並在條目加註〔來源專案：invest〕；鏡射後在該目錄執行 `git add -A && git commit`（harness-global 自 2026-07-04 起為獨立 git repo）。
 3. 兩份不一致時：**以 repo 的 `lessons/general.md` 為準，回填本機**。方向永遠是 repo → 本機，不得反向覆蓋 repo。
 4. 若在無法存取家目錄的環境（如 CI）中產生通用教訓：先寫 general.md，並在條目加註 `〔待鏡射至 harness-global〕`，下次本機 session 補鏡射後移除該註記。
 5. 發現**本機有、repo 無**的條目：不得刪除本機條目，視為「待審提案」——在對話中列給 User，經同意後補進 repo 的 general.md（這不算「上升為通用」審批，因為條目本來就是通用，只是漏了雙寫）。

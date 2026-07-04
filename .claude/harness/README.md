@@ -1,6 +1,6 @@
 # Harness 檔案地圖
 
-> 本目錄是 myProject 的開發 Harness（工作流防閉環迭代機制），2026-07-04 由 Fable 5 bootstrap，供 Opus 4.8（指揮官）／Sonnet 5（主力）／Haiku 4.5（廉價批次）長期運作。
+> 本目錄是 invest 的開發 Harness（工作流防閉環迭代機制），範本 2026-07-04 由 Fable 5 bootstrap、2026-07-05 於 invest 分支重置，供 Opus 4.8（指揮官）／Sonnet 5（主力）／Haiku 4.5（廉價批次）長期運作。
 > 新 session 開場先讀本檔（~1 分鐘），再依下表按需深入。
 
 ## 檔案地圖

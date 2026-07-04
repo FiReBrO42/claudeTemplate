@@ -1,4 +1,4 @@
-# myProject 專屬踩坑檔
+# invest 專屬踩坑檔
 
 > 凡提到**本專案檔名/函式/API/業務規則/目錄結構**的教訓寫這裡（進 git，組員共享）。
 > 寫入前必讀分流判準與格式：`../04-knowledge-protocol.md`
