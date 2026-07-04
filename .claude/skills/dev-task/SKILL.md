@@ -13,7 +13,7 @@ description: 接到開發任務（新功能/修 bug/重構/改文案）時的標
 4. **站 2 設計**（僅 L 級）：依 06 站 2 產出 2–3 方案並落檔 `docs/plans/`，派工單必須引用該檔路徑。
 5. **站 3 派工實作**：用 `/delegate` 派 WORKER（模板 2 或 3）。
 6. **站 4 驗收**：用 `/acceptance` 派 fresh-context 驗收——實作者不得自驗。
-7. **站 5 交付**：依 06 站 5——M/L 級先過 03 模板 4 審查（fresh-context，不得由站 3/4 執行者兼任）才交付；commit 規範查 `.claude/harness/07-stack-profile.md` 欄位 7/8，未填走 fallback（預設訊息格式、只 commit 不推送並提醒 User）。
+7. **站 5 交付**：依 06 站 5——L 級先過 03 模板 4 審查（fresh-context，不得由站 3/4 執行者兼任）才交付；S/M 級站 4 通過即交付（M 的審查已於站 4 以模板 4 完成）。commit 規範查 `.claude/harness/07-stack-profile.md` 欄位 7/8，未填走 fallback（預設訊息格式、只 commit 不推送並提醒 User）。
 8. **站 6 回顧**（M/L 必做；S 僅踩坑時）：用 `/lesson-log` 完成回顧兩問與落檔。
 
 紅線提醒：全程遵守 01 §2 指揮官不下場（單輪 >3 檔或單檔 >400 行 → 派 Subagent）；任何失敗走 01 §4 決策序列，同一件事最多兩輪。
