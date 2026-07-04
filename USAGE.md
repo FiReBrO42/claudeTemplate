@@ -14,9 +14,11 @@
 
 三個使用場景對應三個 prompt：**日常開發用 A、技術棧確定那天用 B、複製範本開新專案用 C**。
 
+> **更快的方式：直接打 skill 指令。** 專案已內建 6 個 skills（進 git，隨範本複製）：場景入口 `/dev-task`、`/stack-setup`、`/harness-init` 分別等價於 Prompt A/B/C；工程化動作 `/delegate`（派工）、`/acceptance`（隔離驗收）、`/lesson-log`（教訓落檔＋回顧）供流程中隨時叫用。下方 Prompt 全文保留，供 skill 不可用的環境備用。
+
 ## 2. 場景一：日常開發（貼 Prompt A）
 
-開新對話（建議指揮官用 Opus 4.8），貼上 Prompt A 並填任務描述。過程中你只需要做三件事：
+開新對話（建議指揮官用 Opus 4.8），輸入 `/dev-task ＜任務描述＞`（或貼 Prompt A）。過程中你只需要做三件事：
 
 1. **回答熔斷提問**——模型被制度要求帶著選項來問（A/B 各附代價＋建議），不會丟開放式問題。
 2. **核可提案**——結構性修改規則檔、建立 hook/settings、新增 runtime 依賴，模型都必須先提案等你點頭。
@@ -41,7 +43,7 @@
 
 ## 3. 場景二：技術棧確定日（一次性，貼 Prompt B）
 
-這天是整套制度的生效開關：驗證命令一旦填入，站 4 的「已實作、未驗證」fallback 自動失效，流水線切換為全驗證模式。
+這天是整套制度的生效開關：驗證命令一旦填入，站 4 的「已實作、未驗證」fallback 自動失效，流水線切換為全驗證模式。輸入 `/stack-setup ＜技術棧與驗證命令＞`（或貼 Prompt B）。
 
 ### Prompt B：技術棧補完
 
@@ -62,19 +64,19 @@
 
 **步驟：**
 
-1. 把以下三樣複製到新專案根目錄：`CLAUDE.md`、`.gitignore`、整個 `.claude/harness/` 目錄。
+1. 把以下四樣複製到新專案根目錄：`CLAUDE.md`、`.gitignore`、整個 `.claude/harness/` 目錄、整個 `.claude/skills/` 目錄。
 2. （換了電腦的話）先確認 `~/.claude/harness-global/` 存在——它不隨專案走，見第 6 節。
-3. 在新專案開對話，貼 Prompt C。模型會自動重置專案綁定內容、從個人累積器播種通用教訓、驗證後回報。
+3. 在新專案開對話，輸入 `/harness-init ＜新專案名＞`（或貼 Prompt C）。模型會自動重置專案綁定內容、從個人累積器播種通用教訓、驗證後回報。
 4. 技術棧已知就接著貼 Prompt B。
 
 ### Prompt C：新專案初始化
 
 ```
-本專案剛由 Harness 範本複製而來（已含 CLAUDE.md、.gitignore、.claude/harness/）。
+本專案剛由 Harness 範本複製而來（已含 CLAUDE.md、.gitignore、.claude/harness/、.claude/skills/）。
 請執行範本初始化，完成並回報後才接受開發任務：
 
 0. 環境實測：不可輕信環境快照——實測 git 狀態（未 init 則 git init -b main）、
-   確認 .claude/harness/ 檔案齊全（README、00–07、lessons/ 兩檔）。
+   確認 .claude/harness/ 檔案齊全（README、00–07、lessons/ 兩檔）與 .claude/skills/ 六個 skill。
 1. 重置專案綁定內容（每檔改前遵守 04 §5 備份規則）：
    - lessons/project-lessons.md 清空為空殼（專屬踩坑不跨專案沿用，04 §3）
    - 07-stack-profile.md 全部欄位重置為 ⬜ 未填
