@@ -1,0 +1,14 @@
+{
+  "common": {
+    "confirm": "確認",
+    "cancel": "取消"
+  },
+  "greeting": {
+    "hello": "哈囉，{name}"
+  },
+  "user": {
+    "profile": {
+      "title": "個人資料"
+    }
+  }
+}

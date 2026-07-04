@@ -1,0 +1,14 @@
+{
+  "common": {
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  },
+  "greeting": {
+    "hello": "Hello, {name}"
+  },
+  "user": {
+    "profile": {
+      "title": "Profile"
+    }
+  }
+}
