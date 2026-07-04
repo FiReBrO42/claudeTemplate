@@ -1,0 +1,15 @@
+# === Harness 規則：任何「本機個人、非共享」檔案若落在專案目錄內，必須加入本檔 ===
+# （個人通用教訓累積器位於 ~/.claude/harness-global/，在家目錄下，天然不進 git）
+
+# Claude Code 本機個人設定（含個人 permissions，不共享）
+.claude/settings.local.json
+
+# 備份檔（規則出處：.claude/harness/04-knowledge-protocol.md 第 5 節「備份規則」）
+*.bak
+
+# OS
+.DS_Store
+
+# 依賴與建置產物（技術棧確定後依實際情況增補，如 node_modules/、dist/）
+node_modules/
+dist/
