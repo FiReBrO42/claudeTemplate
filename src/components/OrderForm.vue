@@ -28,6 +28,10 @@ interface FormState {
   shares: string
   status: OrderStatus
   adviceId?: string
+  /** 選填，空字串代表未填寫 */
+  stopLoss: string
+  /** 選填，空字串代表未填寫 */
+  takeProfit: string
 }
 
 function buildFormState(initial?: Partial<OrderRecord> | null): FormState {
@@ -39,6 +43,8 @@ function buildFormState(initial?: Partial<OrderRecord> | null): FormState {
     shares: initial?.shares !== undefined ? String(initial.shares) : '',
     status: initial?.status ?? 'unfilled',
     adviceId: initial?.adviceId,
+    stopLoss: initial?.stopLoss !== undefined ? String(initial.stopLoss) : '',
+    takeProfit: initial?.takeProfit !== undefined ? String(initial.takeProfit) : '',
   }
 }
 
@@ -71,6 +77,21 @@ function validate(): string[] {
     messages.push(i18n.t('order.form.error.shares'))
   }
 
+  // 停損/停利為選填：留空不驗證，有填才須為大於 0 的數字。
+  if (form.stopLoss) {
+    const stopLossValue = Number(form.stopLoss)
+    if (Number.isNaN(stopLossValue) || stopLossValue <= 0) {
+      messages.push(i18n.t('order.form.error.stopLoss'))
+    }
+  }
+
+  if (form.takeProfit) {
+    const takeProfitValue = Number(form.takeProfit)
+    if (Number.isNaN(takeProfitValue) || takeProfitValue <= 0) {
+      messages.push(i18n.t('order.form.error.takeProfit'))
+    }
+  }
+
   return messages
 }
 
@@ -87,6 +108,8 @@ function handleSubmit(): void {
     shares: Number(form.shares),
     status: form.status,
     adviceId: form.adviceId,
+    stopLoss: form.stopLoss ? Number(form.stopLoss) : undefined,
+    takeProfit: form.takeProfit ? Number(form.takeProfit) : undefined,
   }
 
   if (isEditing.value && props.initial?.id) {
@@ -143,6 +166,16 @@ function handleCancel(): void {
         <option value="unfilled">{{ i18n.t('order.status.unfilled') }}</option>
         <option value="cancelled">{{ i18n.t('order.status.cancelled') }}</option>
       </select>
+    </div>
+
+    <div class="order-form__field">
+      <label for="order-stop-loss">{{ i18n.t('order.form.stopLoss') }}</label>
+      <input id="order-stop-loss" v-model="form.stopLoss" type="number" step="0.01" min="0" />
+    </div>
+
+    <div class="order-form__field">
+      <label for="order-take-profit">{{ i18n.t('order.form.takeProfit') }}</label>
+      <input id="order-take-profit" v-model="form.takeProfit" type="number" step="0.01" min="0" />
     </div>
 
     <div v-if="form.adviceId" class="order-form__field">

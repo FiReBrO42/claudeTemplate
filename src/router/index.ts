@@ -28,6 +28,12 @@ const router = createRouter({
       // route level code-splitting：進站時才載入 Order chunk
       component: () => import('@/views/OrderView.vue'),
     },
+    {
+      path: '/health',
+      name: 'health',
+      // route level code-splitting：進站時才載入 HealthCheck chunk
+      component: () => import('@/views/HealthCheckView.vue'),
+    },
   ],
 })
 

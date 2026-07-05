@@ -62,6 +62,8 @@
       "shares": "股數",
       "status": "狀態",
       "adviceId": "關聯 AI 建議",
+      "stopLoss": "停損價（選填）",
+      "takeProfit": "停利價（選填）",
       "submit": "新增委託單",
       "update": "更新委託單",
       "cancel": "取消編輯",
@@ -69,7 +71,9 @@
         "date": "請選擇日期",
         "symbol": "請輸入標的",
         "price": "委託價須為大於 0 的數字",
-        "shares": "股數須為大於 0 的正整數"
+        "shares": "股數須為大於 0 的正整數",
+        "stopLoss": "停損價須為大於 0 的數字",
+        "takeProfit": "停利價須為大於 0 的數字"
       }
     },
     "side": {
@@ -89,6 +93,48 @@
       "empty": "尚無委託單記錄",
       "edit": "編輯",
       "delete": "刪除"
+    }
+  },
+  "health": {
+    "nav": "委託單健檢",
+    "title": "委託單健檢報告",
+    "empty": "尚無委託單資料，無法產生健檢報告",
+    "score": {
+      "label": "健檢總分",
+      "band": {
+        "good": "良好",
+        "warning": "注意",
+        "danger": "需檢視"
+      }
+    },
+    "severity": {
+      "ok": "正常",
+      "warning": "警告",
+      "critical": "嚴重"
+    },
+    "dimension": {
+      "concentration": {
+        "title": "風險集中度"
+      },
+      "deviation": {
+        "title": "偏離 AI 建議"
+      },
+      "riskControl": {
+        "title": "風控欄位完整性"
+      },
+      "noIssue": "無問題"
+    },
+    "concentration": {
+      "emptyNote": "無已成交買單，不評估集中度"
+    },
+    "issue": {
+      "concentrationWarning": "{symbol} 曝險佔比 {percent}，集中度偏高",
+      "concentrationCritical": "{symbol} 曝險佔比 {percent}，集中度過高",
+      "deviationOrphan": "委託單 {symbol}（{date}）無關聯 AI 建議或建議已不存在",
+      "deviationHold": "委託單 {symbol}（{date}）在 AI 建議為觀望時仍下單",
+      "deviationOpposite": "委託單 {symbol}（{date}）方向與 AI 建議相反",
+      "riskControlMissingStopLoss": "委託單 {symbol}（{date}）缺少停損價",
+      "riskControlMissingTakeProfit": "委託單 {symbol}（{date}）缺少停利價"
     }
   }
 }

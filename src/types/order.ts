@@ -23,4 +23,8 @@ export interface OrderRecord {
   status: OrderStatus
   /** 可選：關聯的 AI 建議 id（一鍵帶入時填入） */
   adviceId?: string
+  /** 可選：停損價，須 > 0；供委託單健檢的風控完整性面向使用 */
+  stopLoss?: number
+  /** 可選：停利價，須 > 0；供委託單健檢的風控完整性面向使用 */
+  takeProfit?: number
 }

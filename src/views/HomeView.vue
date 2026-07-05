@@ -27,6 +27,7 @@ function toggleLocale(): void {
       <RouterLink to="/about">About</RouterLink>
       <RouterLink to="/advice">{{ i18n.t('advice.nav') }}</RouterLink>
       <RouterLink to="/order">{{ i18n.t('order.nav') }}</RouterLink>
+      <RouterLink to="/health">{{ i18n.t('health.nav') }}</RouterLink>
     </nav>
   </main>
 </template>

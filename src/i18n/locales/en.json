@@ -62,6 +62,8 @@
       "shares": "Shares",
       "status": "Status",
       "adviceId": "Linked AI Advice",
+      "stopLoss": "Stop-Loss Price (optional)",
+      "takeProfit": "Take-Profit Price (optional)",
       "submit": "Add Order",
       "update": "Update Order",
       "cancel": "Cancel Edit",
@@ -69,7 +71,9 @@
         "date": "Please select a date",
         "symbol": "Please enter a symbol",
         "price": "Price must be a number greater than 0",
-        "shares": "Shares must be a positive integer greater than 0"
+        "shares": "Shares must be a positive integer greater than 0",
+        "stopLoss": "Stop-loss price must be a number greater than 0",
+        "takeProfit": "Take-profit price must be a number greater than 0"
       }
     },
     "side": {
@@ -89,6 +93,48 @@
       "empty": "No order records yet",
       "edit": "Edit",
       "delete": "Delete"
+    }
+  },
+  "health": {
+    "nav": "Order Health Check",
+    "title": "Order Health Check Report",
+    "empty": "No order data yet, cannot generate a health report",
+    "score": {
+      "label": "Overall Score",
+      "band": {
+        "good": "Good",
+        "warning": "Attention",
+        "danger": "Needs Review"
+      }
+    },
+    "severity": {
+      "ok": "OK",
+      "warning": "Warning",
+      "critical": "Critical"
+    },
+    "dimension": {
+      "concentration": {
+        "title": "Risk Concentration"
+      },
+      "deviation": {
+        "title": "Deviation from AI Advice"
+      },
+      "riskControl": {
+        "title": "Risk Control Completeness"
+      },
+      "noIssue": "No issues"
+    },
+    "concentration": {
+      "emptyNote": "No filled buy orders, concentration not evaluated"
+    },
+    "issue": {
+      "concentrationWarning": "{symbol} exposure share {percent}, concentration is elevated",
+      "concentrationCritical": "{symbol} exposure share {percent}, concentration is too high",
+      "deviationOrphan": "Order {symbol} ({date}) has no linked AI advice or the advice no longer exists",
+      "deviationHold": "Order {symbol} ({date}) was placed despite a hold advice",
+      "deviationOpposite": "Order {symbol} ({date}) direction is opposite to the linked AI advice",
+      "riskControlMissingStopLoss": "Order {symbol} ({date}) is missing a stop-loss price",
+      "riskControlMissingTakeProfit": "Order {symbol} ({date}) is missing a take-profit price"
     }
   }
 }
