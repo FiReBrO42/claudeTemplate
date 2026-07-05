@@ -16,6 +16,12 @@ const router = createRouter({
       // route level code-splitting：進站時才載入 About chunk
       component: () => import('@/views/AboutView.vue'),
     },
+    {
+      path: '/advice',
+      name: 'advice',
+      // route level code-splitting：進站時才載入 Advice chunk
+      component: () => import('@/views/AdviceView.vue'),
+    },
   ],
 })
 

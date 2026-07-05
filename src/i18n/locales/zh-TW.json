@@ -10,5 +10,44 @@
     "profile": {
       "title": "個人資料"
     }
+  },
+  "advice": {
+    "title": "AI 投資建議紀錄",
+    "nav": "投資建議",
+    "form": {
+      "date": "日期",
+      "symbol": "標的",
+      "action": "動作",
+      "price": "建議價位",
+      "summary": "分析摘要",
+      "confidence": "信心度",
+      "submit": "新增紀錄",
+      "error": {
+        "date": "請選擇日期",
+        "symbol": "請輸入標的",
+        "summary": "請輸入分析摘要",
+        "price": "價位須為大於 0 的數字",
+        "confidence": "信心度須介於 1 到 5"
+      }
+    },
+    "action": {
+      "buy": "買進",
+      "sell": "賣出",
+      "hold": "觀望"
+    },
+    "filter": {
+      "symbol": "標的關鍵字",
+      "dateFrom": "起始日期",
+      "dateTo": "結束日期",
+      "clear": "清除篩選"
+    },
+    "list": {
+      "empty": "尚無投資建議紀錄",
+      "delete": "刪除"
+    },
+    "star": {
+      "select": "選擇信心度 {value} 星",
+      "value": "信心度 {value} 星（滿分 5 星）"
+    }
   }
 }
