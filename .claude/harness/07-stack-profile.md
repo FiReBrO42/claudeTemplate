@@ -60,19 +60,19 @@
 - 註：「新增/變更行為必附測試」是 `02-judgment-matrix.md` 第 2 表 #2 的既有規則，本欄只補充「放哪、怎麼命名、怎麼跑單檔」。
 - 備註：新增給 Vitest 的測試用 `*.test.ts`；勿把 `node:test` 的 `.mjs` 檔命名成會被 Vitest include glob 抓到的樣式（見 general.md 教訓）。
 
-## ⬜ 欄位 7：分支模型與 commit 規範
+## ✅ 欄位 7：分支模型與 commit 規範
 
 - 格式範例：`feature 分支自 main 切出、命名 feat/<slug>；commit 首行「type: 摘要」≤50 字，type ∈ feat/fix/refactor/chore/docs`
-- 未填時的 fallback（`06` 站 5 預設）：首行 ≤50 字摘要＋空行＋動機一段。
-- 值：（未填）
-- 備註：User 尚未定案分支模型與 commit 規範；現況觀察 git log 慣用中文 `[動詞]摘要`（如「[建立]…」），但未經 User 確認為規範，故保持 ⬜ 走 fallback。定案前 commit 依 fallback（首行 ≤50 字摘要＋空行＋動機段）。
+- 值（2026-07-05 經 User 定案）：
+  - **分支模型**：直接在 `invest` 分支工作（單一長命分支），不走 feature 分支流程；main 保留範本原樣。
+  - **commit 規範**：首行「[動詞]摘要」≤50 字，動詞 ∈ 建立／調整／修復／重構／文件；空行後接動機/內容段。尾註 `Co-Authored-By` 沿用。
+- 備註：（無）
 
-## ⬜ 欄位 8：交付流程（PR／提測／部署）
+## ✅ 欄位 8：交付流程（PR／提測／部署）
 
 - 格式範例：`PR 目標分支 develop，需 1 人核可；提測單格式見 <路徑>；部署由 CI 於合併後自動觸發`
-- 未填時的 fallback（`06` 站 5 預設）：**只 commit 不推送**，回報中提醒 User。
-- 值：（未填）
-- 備註：User 尚未定案推送／PR／提測／部署流程，保持 ⬜ 走 fallback（只 commit 不推送並提醒）。
+- 值（2026-07-05 經 User 定案）：**只 commit 不推送**——推送、PR、提測、部署一律由 User 手動觸發；交付回報須提醒「尚未推送」。目前無 CI／自動部署。
+- 備註：（無）
 
 ## ✅ 欄位 9：依賴管理
 
