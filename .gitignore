@@ -13,3 +13,6 @@
 # 依賴與建置產物（技術棧確定後依實際情況增補，如 node_modules/、dist/）
 node_modules/
 dist/
+dist-ssr/
+*.local
+.vite/
