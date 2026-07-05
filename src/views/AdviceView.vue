@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 import AdviceForm from '@/components/AdviceForm.vue'
 import StarRating from '@/components/StarRating.vue'
@@ -9,6 +10,10 @@ import type { AdviceRecord } from '@/types/advice'
 
 const i18n = useI18nStore()
 const store = useAdviceStore()
+// useRouter 僅為 inject：未安裝 router 時回傳 undefined 而不拋錯（不像 RouterLink
+// 的 useLink 在 render 階段 eager 存取而崩潰），故凍結的單元測試以無 router 的
+// mount 直掛時本元件仍可正常渲染；導航延後到點擊才需 router。
+const router = useRouter()
 
 const symbolFilter = ref('')
 const dateFrom = ref('')
@@ -37,6 +42,16 @@ function clearFilters(): void {
   symbolFilter.value = ''
   dateFrom.value = ''
   dateTo.value = ''
+}
+
+// 一鍵帶入：程式化 SPA 導航（router.push）而非原生 <a href>，避免整頁重載丟失
+// 未持久化的記憶體狀態（如 i18n 語系 ref）。router 為 undefined（測試無安裝）時防呆 return。
+function createOrder(record: AdviceRecord): void {
+  if (!router) return
+  router.push({
+    path: '/order',
+    query: { adviceId: record.id, symbol: record.symbol, side: record.action },
+  })
 }
 </script>
 
@@ -85,6 +100,14 @@ function clearFilters(): void {
           <td>{{ record.summary }}</td>
           <td><StarRating :model-value="record.confidence" readonly /></td>
           <td>
+            <button
+              v-if="record.action !== 'hold'"
+              type="button"
+              class="advice-view__create-order"
+              @click="createOrder(record)"
+            >
+              {{ i18n.t('advice.createOrder') }}
+            </button>
             <button type="button" class="advice-view__delete" @click="handleRemove(record.id)">
               {{ i18n.t('advice.list.delete') }}
             </button>

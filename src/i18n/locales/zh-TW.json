@@ -48,6 +48,47 @@
     "star": {
       "select": "選擇信心度 {value} 星",
       "value": "信心度 {value} 星（滿分 5 星）"
+    },
+    "createOrder": "建立委託單"
+  },
+  "order": {
+    "title": "委託單記錄",
+    "nav": "委託單",
+    "form": {
+      "date": "日期",
+      "symbol": "標的",
+      "side": "方向",
+      "price": "委託價",
+      "shares": "股數",
+      "status": "狀態",
+      "adviceId": "關聯 AI 建議",
+      "submit": "新增委託單",
+      "update": "更新委託單",
+      "cancel": "取消編輯",
+      "error": {
+        "date": "請選擇日期",
+        "symbol": "請輸入標的",
+        "price": "委託價須為大於 0 的數字",
+        "shares": "股數須為大於 0 的正整數"
+      }
+    },
+    "side": {
+      "buy": "買進",
+      "sell": "賣出"
+    },
+    "status": {
+      "filled": "已成交",
+      "unfilled": "未成交",
+      "cancelled": "已取消"
+    },
+    "filter": {
+      "status": "狀態篩選",
+      "all": "全部"
+    },
+    "list": {
+      "empty": "尚無委託單記錄",
+      "edit": "編輯",
+      "delete": "刪除"
     }
   }
 }

@@ -14,6 +14,15 @@
 - 〔判準〕通用
 - 〔日期〕2026-07-04
 
+### 元件被既有測試以「無 router 的 mount」直掛時，導航優先用 useRouter()+push，勿用 RouterLink（會崩），最下策才退回會整頁重載的 `<a href>`
+- 〔症狀〕在模板用 `<RouterLink>` 的元件，被 `mount(Component)`（未傳 `global.plugins:[router]`）掛載時拋 `TypeError: Cannot read properties of undefined (reading 'resolve')`（來自 vue-router 內部 `useLink`）＋ `[Vue warn]: Component is missing template or render function` 指向 RouterLink，令原本綠的凍結測試全紅
+- 〔觸發條件/重現步驟〕元件需要路由導航，但其既有測試檔案是不可修改的邊界（介面凍結/驗收），且該測試以 `mount(Component)` 直掛、不安裝 router plugin
+- 〔根因〕vue-router 的路由狀態經 `app.use(router)` 在 `install()` 用 `provide()` 注入；獨立 `mount()` 不套 app 級 plugin，故 router 相關 inject 皆取不到。關鍵差異：`RouterLink` 內部的 `useLink` 在 **render 階段就 eager 存取** router 並讀其屬性 → 未安裝即崩；而 `useRouter()`/`useRoute()` 只是 `inject()`，未安裝時**回傳 `undefined` 而不拋錯**，只要不在掛載時就存取其屬性即安全
+- 〔正確做法〕優先序：①**首選** `const router = useRouter()` + `@click` handler 內 `router.push({ path, query })`，並在 handler 首行做 `if (!router) return` 防呆——導航延後到點擊才需 router，凍結測試若未「點擊」該入口即不受影響，無需改測試；②若元件確實可改測試，才用 `createRouter({ history: createMemoryHistory(), routes })` + `router.push(path)` + `await router.isReady()` 後 `mount(Component, { global: { plugins:[router] } })`；③**最下策** 原生 `<a :href>` 手動組 query string——代價是在 `createWebHistory` 模式會觸發**整頁重載**，丟失所有未持久化的記憶體狀態（如只存記憶體 ref 的 i18n 語系會被重置回預設），非 SPA 導航，僅在前兩者都不可行時採用
+- 〔判準〕通用
+- 〔日期〕2026-07-05
+- 〔來源專案〕invest（AdviceView 加一鍵帶入入口：先用 RouterLink 使凍結的 AdviceView.test.ts 4 測試全紅，一度改 `<a href>` 但發現會整頁重載丟失語系，最終定案 useRouter()+router.push）
+
 ### Vitest 預設 include glob 會誤抓專案內非 Vitest 的 *.test.mjs 檔並嘗試打包，導致 node: 內建模組解析失敗
 - 〔症狀〕`vitest run` 報錯 `Cannot bundle Node.js built-in "node:test" imported from "xxx.test.mjs"`，即便該檔案從未被任何程式匯入、只打算給 `node --test` 單獨執行
 - 〔觸發條件/重現步驟〕專案中同時存在 Vitest（測 .ts/.vue）與 `node --test`（測零依賴 .mjs 核心模組）雙 runner 分工時，Vitest 未設定 `test.include`，沿用預設 glob（含 `*.test.*`），把 `.mjs` 的 `node:test` 案例也掃進自己的測試檔案清單

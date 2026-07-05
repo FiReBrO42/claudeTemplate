@@ -48,6 +48,47 @@
     "star": {
       "select": "Select confidence {value} stars",
       "value": "Confidence {value} out of 5 stars"
+    },
+    "createOrder": "Create Order"
+  },
+  "order": {
+    "title": "Order Records",
+    "nav": "Orders",
+    "form": {
+      "date": "Date",
+      "symbol": "Symbol",
+      "side": "Side",
+      "price": "Order Price",
+      "shares": "Shares",
+      "status": "Status",
+      "adviceId": "Linked AI Advice",
+      "submit": "Add Order",
+      "update": "Update Order",
+      "cancel": "Cancel Edit",
+      "error": {
+        "date": "Please select a date",
+        "symbol": "Please enter a symbol",
+        "price": "Price must be a number greater than 0",
+        "shares": "Shares must be a positive integer greater than 0"
+      }
+    },
+    "side": {
+      "buy": "Buy",
+      "sell": "Sell"
+    },
+    "status": {
+      "filled": "Filled",
+      "unfilled": "Unfilled",
+      "cancelled": "Cancelled"
+    },
+    "filter": {
+      "status": "Filter by status",
+      "all": "All"
+    },
+    "list": {
+      "empty": "No order records yet",
+      "edit": "Edit",
+      "delete": "Delete"
     }
   }
 }
