@@ -35,6 +35,7 @@
 
 > 本節於範本 invest 分支重置時重列為 invest 的起點；一二三節為通用提醒，跨專案保留不動。
 
-- [ ] **技術棧已確定（Vue 3 + Vite + Pinia + TypeScript）**：接著執行 `/stack-setup` 完成 `00-baseline.md` 第 4 節補完清單其餘項（CLAUDE.md 首行與驗證命令區、`07-stack-profile.md` 全欄位、專案 `settings.json` permissions、lint hook、`.gitignore` 增補）。00 §4 第 1 項（00 檔頭技術棧一行式摘要）已於 harness-init 勾銷。
-- [ ] 首次真實任務跑完後，依 `04-knowledge-protocol.md` 第 7 節做第一次反思，校準本 harness 與 invest 實際工作的摩擦點
+- [x] ~~技術棧接入~~（2026-07-05 /stack-setup 完成：驗證命令區已填、07 欄位 1–6/9 ✅、欄位 7/8 經 User 於 `886a63c` 定案、permissions 已核可；lint hook 經 User 決定暫不採用——見 00 §4）
+- [x] ~~首次真實任務反思~~（2026-07-05 完成：M 級 ×2＋L 級健檢皆含站 6 回顧，新增 4 條通用教訓並雙寫，其中「subagent 權宜解須經校準」係 L 級審查實戰產出 `7db32f8`）
+- [x] ~~畢業考~~（2026-07-05 七關全數通過，User 判定；紀錄見 `docs/graduation-exam.md`，00 §5 尾註已改記「經實戰驗證」。此後例行事項：每 2–4 週退化檢查一次）
 - 〔機器層既有事實·跨專案沿用〕全域 `~/.claude/settings.json` 殘留 permissions 已於 2026-07-04 清理完畢（Read 路徑規則涵蓋 `Desktop/自用資料/**`，本專案在範圍內）；harness-global 已本機 git 版本化，**遠端推送仍待 User**（見第三節備份提醒）。

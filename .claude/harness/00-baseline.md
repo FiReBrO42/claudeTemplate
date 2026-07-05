@@ -83,4 +83,4 @@
 3. **跨 session 的隱性脈絡**（User 上週口頭說過但沒落檔的決定）。
    → 標準動作：只信落檔紀錄（CLAUDE.md / harness / lessons / git history）。落檔紀錄查無 → 明說「查無紀錄」並提問，**禁止腦補**。
 
-另註：本 Harness 的規則本身由 Fable 5 一次性外化而成，未經長期實戰打磨。前 2–4 週使用中若發現規則與實際摩擦，依 `04-knowledge-protocol.md` 的權限分級提案修訂——結構性修改需 User 同意。
+另註：本 Harness 的規則由 Fable 5 外化，並已於 2026-07-05 通過七關畢業考（含弱模型指揮官獨立執行 M/L 級任務、熔斷與雙重把關實測、「摩擦→提案→裁決→修訂」完整迭代一次），詳見 `docs/graduation-exam.md`——自此為**經實戰驗證**版本。持續使用中發現新摩擦時，仍依 `04-knowledge-protocol.md` 權限分級提案修訂——結構性修改需 User 同意；並建議每 2–4 週對照 `05-handover-letter.md` 第二節徵兆表做例行退化檢查。
