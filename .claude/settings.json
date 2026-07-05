@@ -1,4 +1,16 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(npm run lint)",
+      "Bash(npm run test)",
+      "Bash(npm run build)",
+      "Bash(npm run type-check)",
+      "Bash(npm run dev)",
+      "Bash(npm install)",
+      "Bash(npx vitest run:*)",
+      "Bash(node --test:*)"
+    ]
+  },
   "hooks": {
     "PreToolUse": [
       {

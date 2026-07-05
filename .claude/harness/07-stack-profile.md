@@ -15,68 +15,69 @@
 
 ---
 
-## ⬜ 欄位 1：技術棧與版本
+## ✅ 欄位 1：技術棧與版本
 
 - 格式範例：`Vue 3.4 + Vite 5 + Pinia 2 + TypeScript 5；Node 20（.nvmrc 為準）`
-- 值：（未填）
-- 備註：（無）
+- 值：Vue 3.5 + Vite 8 + TypeScript 6 + Pinia 3 + Vue Router 5；Node 20（package.json 宣告版本為準；.nvmrc 尚未建立）。i18n 核心為零依賴自研模組 `src/i18n/i18n.mjs`（框架無關，非 vue-i18n）。
+- 備註：版本為 package.json `^` 宣告的下界；升級走欄位 9 流程。
 
-## ⬜ 欄位 2：驗證命令（指標欄）
+## ✅ 欄位 2：驗證命令（指標欄）
 
 - 本欄**不存值**。實際命令填在專案根 `CLAUDE.md`「驗證命令」區。
-- 填寫 CLAUDE.md 該區後，把本欄改為 ✅ 並註記「已填，見 CLAUDE.md」。
-- 未填時的 fallback：`00-baseline.md` 第 3 節反模式 1——一切實作最高只能標「已實作、未驗證」。
+- 已填，見 CLAUDE.md「驗證命令」區（lint / test / build / dev）。
 
-## ⬜ 欄位 3：開發環境啟動
+## ✅ 欄位 3：開發環境啟動
 
 - 格式範例：`npm run dev`（預設埠 5173）；需要環境變數時註明 `.env` 樣板位置
-- 值：（未填）
+- 值：`npm install` 後 `npm run dev`（Vite，預設埠 5173）。目前無 `.env` 需求。
 - 備註：（無）
 
-## ⬜ 欄位 4：目錄結構約定
+## ✅ 欄位 4：目錄結構約定
 
-- 格式範例（表格）：
+- 值：
 
   | 頂層目錄 | 用途 | 新檔判斷規則 |
   |---|---|---|
-  | `src/components/` | 可複用元件 | 被 ≥2 處使用才放這裡，否則放使用者目錄下 |
+  | `src/views/` | 路由頁面元件 | 對應一條 route 才放這裡 |
+  | `src/components/` | 可複用元件 | 被 ≥2 處使用才放這裡，否則就近放使用它的 view 旁（目錄目前尚未建立，首次需要時建立） |
+  | `src/stores/` | Pinia store | 一個領域一檔，`defineStore`；測試同目錄 `*.test.ts` |
+  | `src/router/` | Vue Router 設定 | `index.ts` 集中管理路由表 |
+  | `src/i18n/` | 零依賴 i18n 核心＋locales | 核心 `.mjs`／型別 `.d.mts`／`locales/<locale>.json`；**核心與 locales 屬既有資產，改動前先確認** |
+  | `src/assets/` | 靜態資源 | 需被 import 的資源 |
 
-- 值：（未填）
-- 備註：（無）
+- 備註：Vue 元件響應式 i18n 一律經 `src/stores/i18n.ts` 的 `t`/`setLocale`，不直接呼叫核心 `.mjs`。
 
-## ⬜ 欄位 5：程式碼風格
+## ✅ 欄位 5：程式碼風格
 
 - 格式範例：`ESLint 設定於 .eslintrc.cjs；風格爭議以 npm run lint 輸出為準，不憑感覺爭論`
-- 值：（未填）
-- 備註：（無）
+- 值：ESLint 9 flat config 於 `eslint.config.js`（`@vue/eslint-config-typescript` + `eslint-plugin-vue`）；風格爭議一律以 `npm run lint` 輸出為準，不憑感覺爭論。型別檢查用 `vue-tsc --noEmit`（見 build）。
+- 備註：無 Prettier；格式由 ESLint 規則涵蓋。
 
-## ⬜ 欄位 6：測試策略
+## ✅ 欄位 6：測試策略
 
 - 格式範例：`Vitest；測試檔與被測檔同目錄、命名 *.spec.ts；跑單檔：npx vitest run <路徑>`
+- 值：**雙 runner**——(1) Vitest 測 `.ts`/`.vue`（環境 happy-dom，`@vue/test-utils`），測試檔與被測檔同目錄、命名 `*.test.ts`，僅掃 `src/**/*.test.ts`；跑單檔 `npx vitest run <路徑>`。(2) `node --test` 測零依賴 i18n 核心 `src/i18n/i18n.test.mjs`（`node:test`，保持框架無關）；跑：`node --test src/i18n/i18n.test.mjs`。`npm run test` 以 `&&` 串跑兩者。
 - 註：「新增/變更行為必附測試」是 `02-judgment-matrix.md` 第 2 表 #2 的既有規則，本欄只補充「放哪、怎麼命名、怎麼跑單檔」。
-- 未填時的 fallback：`03-delegation-templates.md` 模板 2 測試條目的 fallback（完成上限「已實作、未驗證」）。
-- 值：（未填）
-- 備註：（無）
+- 備註：新增給 Vitest 的測試用 `*.test.ts`；勿把 `node:test` 的 `.mjs` 檔命名成會被 Vitest include glob 抓到的樣式（見 general.md 教訓）。
 
 ## ⬜ 欄位 7：分支模型與 commit 規範
 
 - 格式範例：`feature 分支自 main 切出、命名 feat/<slug>；commit 首行「type: 摘要」≤50 字，type ∈ feat/fix/refactor/chore/docs`
 - 未填時的 fallback（`06` 站 5 預設）：首行 ≤50 字摘要＋空行＋動機一段。
 - 值：（未填）
-- 備註：（無）
+- 備註：User 尚未定案分支模型與 commit 規範；現況觀察 git log 慣用中文 `[動詞]摘要`（如「[建立]…」），但未經 User 確認為規範，故保持 ⬜ 走 fallback。定案前 commit 依 fallback（首行 ≤50 字摘要＋空行＋動機段）。
 
 ## ⬜ 欄位 8：交付流程（PR／提測／部署）
 
 - 格式範例：`PR 目標分支 develop，需 1 人核可；提測單格式見 <路徑>；部署由 CI 於合併後自動觸發`
 - 未填時的 fallback（`06` 站 5 預設）：**只 commit 不推送**，回報中提醒 User。
 - 值：（未填）
-- 備註：（無）
+- 備註：User 尚未定案推送／PR／提測／部署流程，保持 ⬜ 走 fallback（只 commit 不推送並提醒）。
 
-## ⬜ 欄位 9：依賴管理
+## ✅ 欄位 9：依賴管理
 
 - 格式範例：`npm install <pkg>；lockfile 必須一併 commit；升級既有依賴視同新增，走同一流程`
-- 註：「新增 runtime 依賴須先熔斷徵求 User」是 `06` 站 3 的硬規則，本欄只補充安裝命令與鎖定方式。
-- 值：（未填）
+- 值：npm（`package-lock.json` 必須一併 commit）。新增 runtime 依賴須先熔斷徵求 User（`06` 站 3 硬規則）；升級既有依賴視同新增，走同一流程。dev 依賴可先行但須在回報標明。
 - 備註：（無）
 
 ---

@@ -64,11 +64,11 @@
 ## 4. 技術棧確定後的補完清單（TODO — 由 COMMANDER 在確定棧後執行並勾銷）
 
 - [x] ~~更新本檔頂部技術棧欄位~~（2026-07-05 harness-init 已填一行式摘要「Vue 3 + Vite + Pinia + TypeScript」；操作層詳值仍待 /stack-setup 填入 07）
-- [ ] 在 CLAUDE.md「驗證命令」區填入實際命令（lint / test / build / dev）
-- [ ] 填寫 `07-stack-profile.md` 全部**可確定**欄位（同步把 ⬜ 改 ✅）；無法確定者依 07 填寫規則保持 ⬜ 並註明原因，不阻擋本項勾銷
-- [ ] 建立 `.claude/settings.json` 專案 permissions（allow 驗證命令）
-- [ ] 建立 lint hook（見 2.3）
-- [ ] 依實際建置產物增補 `.gitignore`
+- [x] ~~在 CLAUDE.md「驗證命令」區填入實際命令~~（2026-07-05 /stack-setup 已填 lint / test / build / dev 表格）
+- [x] ~~填寫 `07-stack-profile.md` 全部可確定欄位~~（2026-07-05 /stack-setup 填欄位 1–6、9 為 ✅；欄位 7 commit 規範、欄位 8 交付流程因 User 尚未定案保持 ⬜ 走 fallback）
+- [x] ~~建立 `.claude/settings.json` 專案 permissions（allow 驗證命令）~~（2026-07-05 /stack-setup 經 User 核可，已加入 npm run lint/test/build/type-check/dev、npm install、npx vitest run、node --test）
+- [~] lint hook（見 2.3）——2026-07-05 /stack-setup 提案，**User 決定暫不採用**（權衡：每次改檔觸發會拖慢 subagent 批次改檔，且站 4 驗收已跑 lint 作第二道關卡）；未來有需要再議
+- [x] ~~依實際建置產物增補 `.gitignore`~~（2026-07-05 scaffold 時已增補 `node_modules/`、`dist/`、`dist-ssr/`、`*.local`、`.vite/`）
 
 > 授權範圍：清單中「填寫欄位、勾銷項目」類動作屬 `04-knowledge-protocol.md` 第 5 節預授權，免徵求同意；「建立 settings.json／建立 lint hook／增補 .gitignore」屬環境變更——執行前把擬定內容一次性列給 User 核可，核可後即可全部執行並勾銷。
 

@@ -1,6 +1,6 @@
 # invest
 
-技術棧：待定（推定 Vue 3 + Vite + Pinia；確定後更新此行、下方驗證命令區與 `.claude/harness/07-stack-profile.md`）。
+技術棧：Vue 3 + Vite + TypeScript + Pinia + Vue Router（Node 20）。操作層詳值（結構、風格、測試、commit 規範）見 `.claude/harness/07-stack-profile.md`。
 本檔是**路由中心**：只放路由與最小核心規則。詳細規則一律在指向的獨立檔案中，不要往本檔堆內容。
 
 ## 每個主對話（指揮官）session 開場必做（依序）
@@ -38,7 +38,16 @@
 
 ## 驗證命令（實作任務完成的前提）
 
-> ⚠️ 尚未建立（技術棧未定）。依 `00-baseline.md` 第 3 節反模式 1：本區為空時，**禁止把任何實作任務標記為「完成」**，只能回報「已實作、未驗證」。技術棧確定後在此填入 lint / test / build / dev 命令。
+> 單一事實來源。實作任務宣告「完成」前，相關命令必須實跑 exit 0（隔離驗收由 fresh-context subagent 執行）。
+
+| 用途 | 命令 | 說明 |
+|---|---|---|
+| Lint | `npm run lint` | `eslint .`，須無錯誤 |
+| Test | `npm run test` | 雙 runner 串跑：`vitest run`（.ts/.vue 整合層）+ `node --test src/i18n/i18n.test.mjs`（零依賴 i18n 核心）；兩者皆須通過 |
+| Build | `npm run build` | `type-check`（`vue-tsc --noEmit` 三份 tsconfig）+ `vite build` |
+| Dev | `npm run dev` | Vite 開發伺服器（預設埠 5173） |
+
+> 完整驗證（交付前）：`npm run lint && npm run test && npm run build` 三者皆 exit 0。
 
 ## 最小核心規則（僅此三條，其餘皆在路由檔中）
 
